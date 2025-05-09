@@ -1,0 +1,12 @@
+# Ignore already added folders
+/GestionOrdreFabrication/src/main/java/com/example/gestionfabrication/entities
+/GestionOrdreFabrication/src/main/java/com/example/gestionfabrication/dto
+/GestionOrdreFabrication/src/main/java/com/example/gestionfabrication/repositories
+/GestionOrdreFabrication/src/main/java/com/example/gestionfabrication/controllers
+/AngularOrdrefabrication/ordreFabrication/src/app/components
+/AngularOrdrefabrication/ordreFabrication/src/app/employes
+/AngularOrdrefabrication/ordreFabrication/src/app/home
+/AngularOrdrefabrication/ordreFabrication/src/app/home
+/AngularOrdrefabrication/ordreFabrication/src/app/Models
+/AngularOrdrefabrication/ordreFabrication/src/app/produits
+/AngularOrdrefabrication/ordreFabrication/src/app/services
