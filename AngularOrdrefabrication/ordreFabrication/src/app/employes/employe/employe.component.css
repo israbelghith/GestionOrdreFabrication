@@ -1,0 +1,14 @@
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+table {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+button {
+  min-width: 80px;
+}

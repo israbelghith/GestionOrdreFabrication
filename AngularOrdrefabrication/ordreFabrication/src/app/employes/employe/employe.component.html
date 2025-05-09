@@ -1,0 +1,36 @@
+<div class="container mt-4">
+
+  <h2 class="mb-3">Liste des employés</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+<br><br><br>
+  <a class="btn btn-primary mb-3" [routerLink]="['/listEmploye/ajoutEmploye']">Ajouter un employé</a>
+
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Poste</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employe of employes">
+        <td>{{ employe.nom }}</td>
+        <td>{{ employe.prenom }}</td>
+        <td>{{ employe.email }}</td>
+        <td>{{ employe.poste }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm me-2" [routerLink]="['/listEmploye/modifierEmploye', employe.id]" >Modifier</button>
+          <button class="btn btn-danger btn-sm" *ngIf="employe.id !== undefined" (click)="supprimerEmploye(employe.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
