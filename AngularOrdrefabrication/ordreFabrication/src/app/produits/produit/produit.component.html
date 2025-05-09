@@ -1,0 +1,51 @@
+<div class="container mt-4">
+
+
+  <h2 class="mb-3">Liste des produits</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div> <br><br>
+  <a class="btn btn-primary mb-3" [routerLink]="['/listProduit/ajoutProduit']">Ajouter Produit</a>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Code Produit</th>
+        <th>Nom Produit</th>
+        <th>Catégorie</th>
+        <th>Quantité en Stock</th>
+        <th>Description</th>
+        <th>Fournisseur</th>
+        <th>Coût Unitaire</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produit of produits">
+        <td>{{ produit.codeProduit }}</td>
+        <td>{{ produit.nomProduit }}</td>
+        <td>{{ produit.categorie }}</td>
+        <td>{{ produit.quantiteStock }}</td>
+        <td>{{ produit.description }}</td>
+        <td>{{ produit.fournisseur }}</td>
+        <td>{{ produit.coutUnitaire | currency }}</td>
+
+        <td>
+
+
+          <button class="btn btn-warning btn-sm me-2"
+          *ngIf="produit.id"
+          [routerLink]="['/listProduit/ModifierProduit', produit.id]">
+          Modifier
+        </button>
+
+
+          <button class="btn btn-danger btn-sm" *ngIf="produit.id !== undefined" (click)="supprimerProduit(produit.id)">
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

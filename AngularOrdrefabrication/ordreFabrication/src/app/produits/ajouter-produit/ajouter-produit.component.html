@@ -1,0 +1,47 @@
+<div class="container mt-4">
+  <h2 class="mb-3">Ajouter un produit</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div> <br><br>
+
+  <form (ngSubmit)="ajouterProduit()" #produitForm="ngForm">
+
+    <div class="mb-3">
+      <label for="codeProduit" class="form-label">Code Produit</label>
+      <input type="text" id="codeProduit" name="codeProduit" class="form-control" [(ngModel)]="nouveauProduit.codeProduit" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="nomProduit" class="form-label">Nom Produit</label>
+      <input type="text" id="nomProduit" name="nomProduit" class="form-control" [(ngModel)]="nouveauProduit.nomProduit" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="categorie" class="form-label">Catégorie</label>
+      <input type="text" id="categorie" name="categorie" class="form-control" [(ngModel)]="nouveauProduit.categorie">
+    </div>
+
+    <div class="mb-3">
+      <label for="quantiteStock" class="form-label">Quantité en stock</label>
+      <input type="number" id="quantiteStock" name="quantiteStock" class="form-control" [(ngModel)]="nouveauProduit.quantiteStock">
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea id="description" name="description" class="form-control" [(ngModel)]="nouveauProduit.description"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="fournisseur" class="form-label">Fournisseur</label>
+      <input type="text" id="fournisseur" name="fournisseur" class="form-control" [(ngModel)]="nouveauProduit.fournisseur">
+    </div>
+
+    <div class="mb-3">
+      <label for="coutUnitaire" class="form-label">Coût unitaire</label>
+      <input type="number" step="0.01" id="coutUnitaire" name="coutUnitaire" class="form-control" [(ngModel)]="nouveauProduit.coutUnitaire">
+    </div>
+
+    <button type="submit" class="btn btn-success">Ajouter</button>
+  </form>
+</div>
