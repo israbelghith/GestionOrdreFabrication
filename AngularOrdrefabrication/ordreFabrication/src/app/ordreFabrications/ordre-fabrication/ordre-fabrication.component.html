@@ -1,0 +1,91 @@
+<div class="container mt-4">
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <h2 class="mb-3">Liste des Ordres de Fabrication</h2>
+
+  <div class="container mt-4">
+    <h4 class="mb-3">Recherche Ordre par</h4>
+    <div class="row mb-3">
+      <div class="col">
+        <select class="form-control" [(ngModel)]="statutRecherche">
+          <option value="">Tous les statuts</option>
+          <option *ngFor="let statut of statuts" [value]="statut">{{ statut }}</option>
+        </select>
+      </div>
+      <div class="col">
+        <select class="form-control" [(ngModel)]="produitRecherche">
+          <option value="">Tous les produits</option>
+          <option *ngFor="let produit of produits" [value]="produit.nomProduit">{{ produit.nomProduit }}</option>
+        </select>
+      </div>
+      <div class="col">
+        <select class="form-control" [(ngModel)]="employeRecherche">
+          <option value="">Tous les employés</option>
+          <option *ngFor="let emp of employes" [value]="emp.nom">{{ emp.nom }} {{ emp.prenom }}</option>
+        </select>
+      </div>
+      <div class="col">
+        <select class="form-control" [(ngModel)]="machineRecherche">
+          <option value="">Toutes les machines</option>
+          <option *ngFor="let mach of machines" [value]="mach.designation">{{ mach.designation }}</option>
+        </select>
+      </div>
+      <div class="col">
+        <button class="btn btn-success" (click)="rechercherAvancee()">Rechercher</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <a class="btn btn-primary mb-3" [routerLink]="['/listOrdre/ajoutOrdre']">Ajouter Ordre</a>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Numéro d'Ordre</th>
+        <th>Quantité</th>
+        <th>Date de Début</th>
+        <th>Date de Fin</th>
+        <th>Statut</th>
+        <th>Produit</th>
+        <th>Employé</th>
+        <th>Machine</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ordre of ordreFabrications">
+        <td>{{ ordre.numeroOrdre }}</td>
+        <td>{{ ordre.quantite }}</td>
+        <td>{{ ordre.dateDebut | date:'dd-MM-yyyy HH:mm' }}</td>
+        <td>{{ ordre.dateFin | date:'dd-MM-yyyy HH:mm' }}</td>
+
+        <td>{{ ordre.statut }}</td>
+        <td>{{ ordre.produit.nomProduit || 'Non spécifié' }}</td>
+        <td>{{ ordre.employe?.nom }} {{ ordre.employe?.prenom || 'Non spécifié' }}</td>
+        <td>{{ ordre.machine?.designation || 'Non spécifiée' }}</td>
+
+        <td>
+          <button class="btn btn-info btn-sm me-2"
+            *ngIf="ordre.id"
+            [routerLink]="['/listOrdre/affectation', ordre.id]">
+            Affecter
+          </button>
+
+          <button class="btn btn-warning btn-sm me-2"
+            *ngIf="ordre.id"
+            [routerLink]="['/listOrdre/ModifierOrdre', ordre.id]">
+            Modifier
+          </button>
+
+          <button class="btn btn-danger btn-sm" *ngIf="ordre.id !== undefined" (click)="supprimerOrdreFabrication(ordre.id)">
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

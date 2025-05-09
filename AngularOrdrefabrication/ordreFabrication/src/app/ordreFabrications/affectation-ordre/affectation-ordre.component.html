@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <h2>Affecter un Employé et une Machine</h2>
+
+  <!-- Affichage de la période -->
+  <div class="alert alert-info" *ngIf="ordreDebut && ordreFin">
+    <strong>Période de l'ordre :</strong><br>
+    Du {{ ordreDebut | date:'longDate' }} à {{ ordreDebut | date:'shortTime' }}<br>
+    Au {{ ordreFin | date:'longDate' }} à {{ ordreFin | date:'shortTime' }}
+  </div>
+
+  <!-- Formulaire d'affectation -->
+  <form [formGroup]="affectationForm" (ngSubmit)="onSubmit()">
+    <!-- Sélection d'employé -->
+    <div class="form-group mb-3">
+      <label for="employe">Employé</label>
+      <select id="employe" class="form-control" formControlName="employeId" required>
+        <option [value]="null">Aucun employé</option>
+        <option *ngFor="let employe of employes" [value]="employe.id">
+          {{ employe.nom }} {{ employe.prenom }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Sélection de machine -->
+    <div class="form-group mb-3">
+      <label for="machine">Machine</label>
+      <select id="machine" class="form-control" formControlName="machineId" required>
+        <option [value]="null">Aucune machine</option>
+        <option *ngFor="let machine of machines" [value]="machine.id">
+          {{ machine.designation }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Bouton de soumission -->
+    <button class="btn btn-primary" type="submit" [disabled]="affectationForm.invalid">
+      Enregistrer l'affectation
+    </button>
+  </form>
+
+  <!-- Message de succès -->
+  <div *ngIf="message" class="alert alert-success mt-3">
+    {{ message }}
+  </div>
+
+  <!-- Message d'erreur -->
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+</div>
