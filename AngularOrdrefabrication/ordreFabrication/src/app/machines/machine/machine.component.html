@@ -1,0 +1,54 @@
+
+<div class="container mt-4">
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+</div>
+
+  <h2 class="mb-3">Liste des Machines</h2>
+
+  <a class="btn btn-primary mb-3" [routerLink]="['/listMachine/ajoutMachine']">Ajouter Machine</a>
+
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>CodeMachine</th>
+        <th>Designation</th>
+        <th>TypeMachine</th>
+        <th>Etat</th>
+        <th>EtatMaintenance</th>
+        <th>DateDebutMaintenance</th>
+        <th>DateFinMaintenance</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let machine of machines">
+        <td>{{ machine.codeMachine }}</td>
+        <td>{{ machine.designation }}</td>
+        <td>{{ machine.typeMachine }}</td>
+        <td>{{ machine.etat }}</td>
+        <td>{{ machine.etatMaintenance }}</td>
+        <td>{{ machine.dateDebutMaintenance | date:'dd-MM-yyyy' }}</td>
+<td>{{ machine.dateFinMaintenance | date:'dd-MM-yyyy' }}</td>
+
+        <td>
+          <button
+          *ngIf="machine.etat=== 'MAINTENANCE_TERMINEE'"
+          class="btn btn-success btn-sm me-2"
+          (click)="activerMachine(machine.id)">
+          Activer
+        </button>
+          <button class="btn btn-info btn-sm me-2"
+        [routerLink]="['/listMachine/maintenance', machine.id]">
+  Maintenance
+</button>
+
+          <button class="btn btn-warning btn-sm me-2" [routerLink]="['/listMachine/modifierMachine', machine.id]" >Modifier</button>
+          <button class="btn btn-danger btn-sm" *ngIf="machine.id !== undefined" (click)="supprimerMachine(machine.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

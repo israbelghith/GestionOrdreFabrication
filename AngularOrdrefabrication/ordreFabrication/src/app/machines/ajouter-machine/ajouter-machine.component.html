@@ -1,0 +1,55 @@
+<div class="container mt-4">
+  <h2 class="mb-3">Ajouter une machine</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+ <br><br>
+  <form (ngSubmit)="ajouterMachine()" #machineForm="ngForm">
+    <div class="mb-3">
+      <label for="codeMachine" class="form-label">Code Machine</label>
+      <input type="text" id="codeMachine" name="codeMachine" class="form-control" [(ngModel)]="nouvelleMachine.codeMachine" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="designation" class="form-label">Désignation</label>
+      <input type="text" id="designation" name="designation" class="form-control" [(ngModel)]="nouvelleMachine.designation" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="typeMachine" class="form-label">Type de Machine</label>
+      <input type="text" id="typeMachine" name="typeMachine" class="form-control" [(ngModel)]="nouvelleMachine.typeMachine">
+    </div>
+
+    <!--<div class="mb-3">
+      <label for="etat" class="form-label">État</label>
+      <select id="etat" name="etat" class="form-control" [(ngModel)]="nouvelleMachine.etat">
+        <option value="En marche">En marche</option>
+        <option value="En panne">En panne</option>
+        <option value="Arrêtée">Arrêtée</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="dateDebutMaintenance" class="form-label">Date Début Maintenance</label>
+      <input type="date" id="dateDebutMaintenance" name="dateDebutMaintenance" class="form-control" [(ngModel)]="nouvelleMachine.dateDebutMaintenance">
+    </div>
+
+    <div class="mb-3">
+      <label for="dateFinMaintenance" class="form-label">Date Fin Maintenance</label>
+      <input type="date" id="dateFinMaintenance" name="dateFinMaintenance" class="form-control" [(ngModel)]="nouvelleMachine.dateFinMaintenance">
+    </div>-->
+
+    <!--<div class="mb-3">
+      <label for="etatMaintenance" class="form-label">État Maintenance</label>
+      <select id="etatMaintenance" name="etatMaintenance" class="form-control" [(ngModel)]="nouvelleMachine.etatMaintenance">
+        <option value="En cours">En cours</option>
+        <option value="Terminée">Terminée</option>
+        <option value="Planifiée">Planifiée</option>
+        <option value="Aucune">Aucune</option>
+      </select>
+    </div>-->
+
+    <button type="submit" class="btn btn-success">Ajouter</button>
+  </form>
+</div>

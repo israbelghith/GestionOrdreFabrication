@@ -1,0 +1,60 @@
+<div class="container mt-4">
+  <h2 class="mb-3">Modifier une machine</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+ <br><br>
+  <form (ngSubmit)="modifierMachine()" #machineForm="ngForm">
+    <div class="mb-3">
+      <label for="codeMachine" class="form-label">Code Machine</label>
+      <input type="text" id="codeMachine" name="codeMachine" class="form-control" [(ngModel)]="machine.codeMachine" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="designation" class="form-label">Désignation</label>
+      <input type="text" id="designation" name="designation" class="form-control" [(ngModel)]="machine.designation" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="typeMachine" class="form-label">Type de Machine</label>
+      <input type="text" id="typeMachine" name="typeMachine" class="form-control" [(ngModel)]="machine.typeMachine">
+    </div>
+
+    <div class="mb-3">
+      <label for="etat" class="form-label">État</label>
+      <select id="etat" name="etat" class="form-control" [(ngModel)]="machine.etat" disabled>
+        <option value="">-- Choisir un état --</option>
+        <option value="DISPONIBLE">DISPONIBLE</option>
+        <option value="EN_MARCHE">EN_MARCHE</option>
+        <option value="EN_PANNE">EN_PANNE</option>
+        <option value="HORS_SERVICE">HORS_SERVICE</option>
+      </select>
+
+    </div>
+
+    <div class="mb-3">
+      <label for="dateDebutMaintenance" class="form-label">Date Début Maintenance</label>
+      <input type="date" id="dateDebutMaintenance" name="dateDebutMaintenance" class="form-control" [(ngModel)]="machine.dateDebutMaintenance" disabled>
+    </div>
+
+    <div class="mb-3">
+      <label for="dateFinMaintenance" class="form-label">Date Fin Maintenance</label>
+      <input type="date" id="dateFinMaintenance" name="dateFinMaintenance" class="form-control" [(ngModel)]="machine.dateFinMaintenance" disabled>
+    </div>
+
+    <div class="mb-3">
+      <label for="etatMaintenance" class="form-label">État Maintenance</label>
+      <select id="etatMaintenance" name="etatMaintenance" class="form-control" [(ngModel)]="machine.etatMaintenance" disabled>
+        <option value="">-- Choisir un état de maintenance --</option>
+        <option value="AUCUNE">AUCUNE</option>
+        <option value="EN_COURS">EN_COURS</option>
+        <option value="TERMINEE">TERMINEE</option>
+        <option value="PLANIFIEE">PLANIFIEE</option>
+      </select>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+  </form>
+</div>
