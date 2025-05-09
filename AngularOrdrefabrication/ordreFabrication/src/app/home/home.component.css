@@ -1,0 +1,13 @@
+.small-card {
+  width: 190px;
+  height: 230px;  /* ou 100%, selon le besoin */
+  font-size: 0.9rem; /* texte plus petit */
+  margin: auto;
+}
+
+.small-card img {
+  height: 60;
+  width:160px;/* ajuste l'image */
+  object-fit: cover;
+  margin: 0 auto;
+}
